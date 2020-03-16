@@ -17,7 +17,7 @@ node {
   def message = "${RESULT_METRIC} 1"
   post.setRequestMethod("POST")
   post.setDoOutput(true)
-  post.getOutputStrem().write(message.getBytes("UTF-8"));
+  post.getOutputStream().write(message.getBytes("UTF-8"));
   def postRC = post.getResponseCode;
   println(postRC);
 }
