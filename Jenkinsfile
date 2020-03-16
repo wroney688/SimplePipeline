@@ -13,8 +13,8 @@ node {
   }
   stage ('Third step') {
   }
-  def post = new URL($RESULT_URL).openConnection()
-  def message = $RESULT_METRIC + ' 1'
+  def post = new URL("${RESULT_URL}").openConnection()
+  def message = "${RESULT_METRIC} 1"
   post.setRequestMethod("POST")
   post.setDoOutput(true)
   post.getOutputStrem().write(message.getBytes("UTF-8"));
