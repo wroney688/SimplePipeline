@@ -4,7 +4,7 @@ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '',
                                       numToKeepStr: '6')), 
             disableConcurrentBuilds(), 
             parameters([string(description: '', name: 'RESULT_URL'), 
-                        string(description: '', name: 'RESULT_METRIC')])
+                        string(description: '', name: 'RESULT_METRIC')])])
 node {
   checkout scm
   stage ('First step') {
