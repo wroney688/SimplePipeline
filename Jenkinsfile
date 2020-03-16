@@ -14,10 +14,10 @@ node {
   stage ('Third step') {
   }
   def post = new URL("${RESULT_URL}").openConnection()
-  def message = "${RESULT_METRIC} 1"
+  def message = "${RESULT_METRIC} 1\n"
   post.setRequestMethod("POST")
   post.setDoOutput(true)
   post.getOutputStream().write(message.getBytes("UTF-8"));
-  def postRC = post.getResponseCode;
+  def postRC = post.getResponseCode();
   println(postRC);
 }
