@@ -13,11 +13,13 @@ node {
   }
   stage ('Third step') {
   }
-  def post = new URL("${RESULT_URL}").openConnection()
-  def message = "${RESULT_METRIC} 1\n"
-  post.setRequestMethod("POST")
-  post.setDoOutput(true)
-  post.getOutputStream().write(message.getBytes("UTF-8"));
-  def postRC = post.getResponseCode();
-  println(postRC);
+  withEnv(['HTTP_PROXY=', 'HTTPS_PROXY=']) {
+    def post = new URL("${RESULT_URL}").openConnection()
+    def message = "${RESULT_METRIC} 1\n"
+    post.setRequestMethod("POST")
+    post.setDoOutput(true)
+    post.getOutputStream().write(message.getBytes("UTF-8"));
+    def postRC = post.getResponseCode();
+    println(postRC);
+  }
 }
