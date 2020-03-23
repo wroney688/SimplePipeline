@@ -1,0 +1,19 @@
+settings:
+  pipeline-executor: hppc
+
+pipeline-execution:
+- scenarioName: scenario1
+  ramp-up: 20s
+  hold-for: 2m
+  evaluation:
+  - description: Baseline Results
+    template: baseline
+    compareTo:
+    - label:
+      resultDB:
+  flows:
+  - scriptName: script1
+    concurrency:
+      ratioByVusers:
+      ratioByTransactions:
+      actualVusers:
